@@ -2,11 +2,11 @@ const jwt = require('jsonwebtoken');
 const User = require('../schemas/user');
 
 module.exports = async (req, res, next) => {
-  const { authorization } = req.cookies;
+  const { Authorization } = req.cookies;
   // Bearer ewrwer.wqrwer.wqerqwer
   // undefined;
   // authorization 쿠키가 존재하지 않았을 때를 대비
-  const [authType, authToken] = (authorization ?? '').split(' '); // authorization 변수가 undefined이거나 null 값일 경우 빈 문자열("")로 변경해라. / Bearer와 오른쪽에 있는 JWT 토큰을 분리해주기 위해 split을 쓴다.
+  const [authType, authToken] = (Authorization ?? '').split(' '); // authorization 변수가 undefined이거나 null 값일 경우 빈 문자열("")로 변경해라. / Bearer와 오른쪽에 있는 JWT 토큰을 분리해주기 위해 split을 쓴다.
 
   // 1. authType === Bearer 값인지 확인하기
   // 2. authToken 존재 유무 검증하기
